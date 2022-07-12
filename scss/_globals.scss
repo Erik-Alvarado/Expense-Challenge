@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+}
+
+body {
+  font-weight: 400;
+  font-size: 18px;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  margin: auto;
+  background: $cream;
+}
