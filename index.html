@@ -22,14 +22,36 @@
     <title>Frontend Mentor | Expenses chart component</title>
   </head>
   <body>
-    My balance $921.48 Spending - Last 7 days mon tue wed thu fri sat sun Total
-    this month $478.33 +2.4% from last month
+    <header>
+      <div class="balance-contain">
+        <span>My balance</span>
+        <h2>$921.48</h2>
+      </div>
+      <span class="balance-icon"></span>
+    </header>
 
-    <div class="attribution">
+    <main>
+      <h2>Spending - Last 7 days</h2>
+      <div class="expense-data"></div>
+      <span class="divider"></span>
+      <div class="total">
+        <span class="total-data">
+          Total this month
+          <h1 id="total-amount">$478.33</h1>
+        </span>
+        <span class="last-update">
+          <h4 class="total-percent">+2.4%</h4>
+          from last month
+        </span>
+      </div>
+    </main>
+
+    <footer>
       Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+        Frontend Mentor</a
       >. Coded by <a href="https://www.erik-alvarado.com">Erik Alvarado</a>.
-    </div>
+    </footer>
+    <script src="/js/script.js"></script>
   </body>
 </html>

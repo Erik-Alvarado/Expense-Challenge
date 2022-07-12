@@ -1,0 +1,25 @@
+header {
+  color: $veryPaleOrange;
+  background-color: $softRed;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .balance-contain {
+    h2 {
+      color: $veryPaleOrange;
+    }
+    span {
+      font-size: 1rem;
+    }
+  }
+  .balance-icon {
+    height: 3rem;
+    width: 4.5rem;
+    background-image: url("/images/logo.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
