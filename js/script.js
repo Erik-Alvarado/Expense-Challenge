@@ -1,32 +1,92 @@
-// const dataTags = document.querySelectorAll(".data");
-// const days = document.querySelectorAll(".date");
-// const dataTotal = document.querySelector("#total-amount");
-const expenseChart = document.querySelector(".expense-data");
+const Datas = [
+  {
+    day: "mon",
+    amount: 17.45,
+  },
+  {
+    day: "tue",
+    amount: 34.91,
+  },
+  {
+    day: "wed",
+    amount: 52.36,
+  },
+  {
+    day: "thu",
+    amount: 31.07,
+  },
+  {
+    day: "fri",
+    amount: 23.39,
+  },
+  {
+    day: "sat",
+    amount: 43.28,
+  },
+  {
+    day: "sun",
+    amount: 25.48,
+  },
+];
+console.log(Datas); // output 'testing'
 
-fetch('data.json')
-    .then(response => response.json())
-    .then(parsed => drawChart(parsed))
-    .catch(err => console.log('failed to load data: ', err))
-// Functions
-function drawChart {
-    
-}
+const graph = document.getElementById("expense-data");
 
+const add_days = (data) => {
+  const fund = document.createElement("p");
+  fund.style.height = data.amount + "%";
 
+  // Find the max amount
+  const max = Math.max(...Datas.map((data) => data.amount));
 
-// function dayFill() {
-//   fetch("data.json")
-//     .then((response) => response.json())
-//     .then((data) => {
-//       days.forEach((e, i) => {
-//         days[i].innerHTML = data[i].day;
-//       });
-//     });
-// }
-// dayFill();
-// const updateChartHeights = (date) => {
-//   span.querySelectorAll("span").forEach((span) => {
-//     span.style.height = span.dataset.height + "%";
-//     console.log(span);
-//   });
-// };
+  if (data.amount === max) {
+    fund.style.backgroundColor = `hsl(186, 34%, 60%)`;
+  }
+
+  // the block that shows the amount when hover on graph
+  const pop = document.createElement("div");
+  pop.classList.add("pop");
+  pop.innerHTML = `${data.amount}`;
+  //   fund.addEventListener("mouseover", function (e) {
+  //     pop.style.display = "flex";
+  //   });
+  //   document.querySelectorAll(".pop").forEach((div) =>
+  //     div.addEventListener("mouseover", function (e) {
+  //       pop.classList.add("show");
+  //     })
+  //   );
+  //   document.querySelectorAll(".pop").forEach((div) =>
+  //     div.addEventListener("click", function (e) {
+  //       pop.classList.add("show");
+  //     })
+  //   );
+
+  fund.classList.add("bar");
+  return `<span class="day">
+      ${pop.outerHTML}
+      ${fund.outerHTML}
+      <span>${data.day}</span>
+      </span>`;
+};
+const amounts = document.querySelectorAll(".pop");
+
+amounts.forEach((amount) =>
+  amount.addEventListener("click", () => {
+    pop.classList.add("show");
+  })
+);
+// amount.querySelectorAll(".pop").forEach((div) =>
+//   div.addEventListener("mouseover", function (e) {
+//     pop.classList.add("show");
+//   })
+// );
+// document.querySelectorAll(".pop").forEach((div) =>
+//   div.addEventListener("click", function (e) {
+//     pop.classList.add("show");
+//   })
+// );
+
+const day_list = Datas.map(add_days);
+graph.innerHTML = day_list.join("");
+
+// console.log(day_list); // output 'testing'
