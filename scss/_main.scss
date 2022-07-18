@@ -8,18 +8,37 @@ main {
     display: grid;
     gap: 0.75rem;
     grid-template-columns: repeat(7, 1fr);
-    height: 15rem;
+    height: 13rem;
     .day {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       cursor: pointer;
+      width: 100%;
+      position: relative;
+      z-index: 1;
       .pop {
         background-color: $darkBrown;
         border-radius: 0.25rem;
         margin-bottom: 0.5rem;
-        text-align: center;
+        justify-content: center;
+        padding: 5px;
         display: none;
+        // z-index: -1;
+        animation: totalFlick ease 0.3s;
+      }
+      &.show {
+        .pop {
+          right: 0;
+          left: 0;
+          color: $veryPaleOrange;
+          font-weight: 700;
+          display: flex;
+          width: max-content;
+        }
+        .bar {
+          opacity: 65%;
+        }
       }
       .bar {
         border-radius: 0.25rem;
@@ -27,6 +46,7 @@ main {
       }
       span {
         text-align: center;
+        font-size: 1rem;
       }
     }
   }

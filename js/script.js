@@ -28,13 +28,12 @@ const Datas = [
     amount: 25.48,
   },
 ];
-console.log(Datas); // output 'testing'
 
 const graph = document.getElementById("expense-data");
 
 const add_days = (data) => {
   const fund = document.createElement("p");
-  fund.style.height = data.amount + "%";
+  fund.style.height = data.amount + 10 + "%";
 
   // Find the max amount
   const max = Math.max(...Datas.map((data) => data.amount));
@@ -46,20 +45,7 @@ const add_days = (data) => {
   // the block that shows the amount when hover on graph
   const pop = document.createElement("div");
   pop.classList.add("pop");
-  pop.innerHTML = `${data.amount}`;
-  //   fund.addEventListener("mouseover", function (e) {
-  //     pop.style.display = "flex";
-  //   });
-  //   document.querySelectorAll(".pop").forEach((div) =>
-  //     div.addEventListener("mouseover", function (e) {
-  //       pop.classList.add("show");
-  //     })
-  //   );
-  //   document.querySelectorAll(".pop").forEach((div) =>
-  //     div.addEventListener("click", function (e) {
-  //       pop.classList.add("show");
-  //     })
-  //   );
+  pop.innerHTML = `$${data.amount}`;
 
   fund.classList.add("bar");
   return `<span class="day">
@@ -68,25 +54,19 @@ const add_days = (data) => {
       <span>${data.day}</span>
       </span>`;
 };
-const amounts = document.querySelectorAll(".pop");
-
-amounts.forEach((amount) =>
-  amount.addEventListener("click", () => {
-    pop.classList.add("show");
-  })
-);
-// amount.querySelectorAll(".pop").forEach((div) =>
-//   div.addEventListener("mouseover", function (e) {
-//     pop.classList.add("show");
-//   })
-// );
-// document.querySelectorAll(".pop").forEach((div) =>
-//   div.addEventListener("click", function (e) {
-//     pop.classList.add("show");
-//   })
-// );
 
 const day_list = Datas.map(add_days);
 graph.innerHTML = day_list.join("");
 
-// console.log(day_list); // output 'testing'
+const amounts = document.querySelectorAll(".day");
+
+amounts.forEach((am) =>
+  am.addEventListener("mouseover", () => {
+    am.classList.add("show");
+  })
+);
+amounts.forEach((am) =>
+  am.addEventListener("mouseout", () => {
+    am.classList.remove("show");
+  })
+);

@@ -1,3 +1,14 @@
+@keyframes totalFlick {
+  0% {
+    margin-bottom: 0rem;
+    opacity: 0;
+  }
+  100% {
+    margin-bottom: 0.5rem;
+    opacity: 100%;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -24,6 +35,9 @@ body {
   margin: auto;
   color: #93867b;
   background: #f8e9dd;
+  align-content: center;
+  height: 100vh;
+  max-width: 500px;
 }
 
 header {
@@ -65,7 +79,7 @@ main #expense-data {
   display: grid;
   gap: 0.75rem;
   grid-template-columns: repeat(7, 1fr);
-  height: 15rem;
+  height: 13rem;
 }
 
 main #expense-data .day {
@@ -73,14 +87,32 @@ main #expense-data .day {
   flex-direction: column;
   justify-content: flex-end;
   cursor: pointer;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 main #expense-data .day .pop {
   background-color: #382314;
   border-radius: 0.25rem;
   margin-bottom: 0.5rem;
-  text-align: center;
+  justify-content: center;
+  padding: 5px;
   display: none;
+  animation: totalFlick ease 0.3s;
+}
+
+main #expense-data .day.show .pop {
+  right: 0;
+  left: 0;
+  color: #fffaf5;
+  font-weight: 700;
+  display: flex;
+  width: max-content;
+}
+
+main #expense-data .day.show .bar {
+  opacity: 65%;
 }
 
 main #expense-data .day .bar {
@@ -90,6 +122,7 @@ main #expense-data .day .bar {
 
 main #expense-data .day span {
   text-align: center;
+  font-size: 1rem;
 }
 
 main .divider {
